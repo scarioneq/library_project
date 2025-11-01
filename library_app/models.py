@@ -47,6 +47,6 @@ class Book(models.Model):
             )
         ]
 
-    #Строкое представление с форматированной строкой
+    #Строковое представление с форматированной строкой
     def __str__(self):
         return f"{self.title} - {self.author.name}"
