@@ -2,7 +2,7 @@ from django.db import models
 
 #Модель автора (представление сущности в базе данных)
 class Author(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     biography = models.TextField(blank=True)
     birth_date = models.DateField(null=True, blank=True)
     died_date = models.DateField(null=True, blank=True)
@@ -11,6 +11,13 @@ class Author(models.Model):
     class Meta:
         verbose_name = "Автор"
         verbose_name_plural = "Авторы"
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'birth_date', 'died_date'],
+                name='unique_author_name_birth_date'
+            )
+        ]
 
     #Метод, возвращающий строковое представление
     def __str__(self):
