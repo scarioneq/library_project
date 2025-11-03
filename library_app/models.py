@@ -14,7 +14,7 @@ class Author(models.Model):
 
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'birth_date', 'died_date'],
+                fields=['name', 'birth_date'],
                 name='unique_author_name_birth_date'
             )
         ]
